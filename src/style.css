@@ -1,0 +1,33 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin-top: 60px;
+  height: 100vh;
+  font-size: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+li + li {
+  margin-top: 2rem;
+}
+
+input {
+  font-size: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
