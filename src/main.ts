@@ -1,48 +1,38 @@
-import './style.css';
+const qs = document.querySelector.bind(document);
+const lbsEl = qs<HTMLInputElement>('#lbs')!;
+const kgsEl = qs<HTMLInputElement>('#kgs')!;
+const key = '$$s$$';
 
-const app = document.querySelector<HTMLDivElement>('#app')!;
-const lbsEl = app.querySelector<HTMLInputElement>('#lbs')!;
-const kgsEl = app.querySelector<HTMLInputElement>('#kgs')!;
+function persistState() {
+  localStorage.setItem(
+    key,
+    JSON.stringify({
+      kgs: Number(kgsEl.value),
+      lbs: Number(lbsEl.value),
+    })
+  );
+}
 
-const persistState = () => {
-  const state = JSON.stringify({
-    kgs: Number(kgsEl.value),
-    lbs: Number(lbsEl.value),
-  });
-  localStorage.setItem('values', state);
-};
-
-const reloadState = () => {
+function reloadState() {
   try {
-    const values = JSON.parse(localStorage.getItem('values') ?? '{}');
+    const values = JSON.parse(localStorage.getItem(key) ?? '{}');
     lbsEl.value = values.lbs;
     kgsEl.value = values.kgs;
   } catch {}
-};
+}
 
-const updateValuesFromKgs = () => {
+function updateValuesFromKgs() {
   const value = Number(kgsEl.value) * 2.205;
   lbsEl.value = value.toFixed(2);
-
   persistState();
-};
+}
 
-const updateValuesFromLbs = () => {
+function updateValuesFromLbs() {
   const value = Number(lbsEl.value) / 2.205;
   kgsEl.value = value.toFixed(2);
-
   persistState();
-};
+}
 
-const addListeners = () => {
-  kgsEl.addEventListener('input', updateValuesFromKgs);
-  lbsEl.addEventListener('input', updateValuesFromLbs);
-};
-
-const main = () => {
-  reloadState();
-  addListeners();
-};
-
-main();
-document.body.style.opacity = '';
+reloadState();
+kgsEl.addEventListener('input', updateValuesFromKgs);
+lbsEl.addEventListener('input', updateValuesFromLbs);
