@@ -2,63 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Unit Convertor</title>
+    <title>Svelte + TS + Vite App</title>
   </head>
-  <style>
-    main {
-      font-family: Avenir, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      color: #2c3e50;
-      margin-top: 60px;
-      height: 100vh;
-      font-size: 20px;
-    }
-
-    main {
-      display: flex;
-      justify-content: center;
-    }
-
-    ul,
-    li {
-      list-style: none;
-      padding: 0;
-    }
-
-    li + li {
-      margin-top: 2rem;
-    }
-
-    input {
-      font-size: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-    }
-  </style>
   <body>
-    <main>
-      <ul>
-        <li>
-          <label class="field">
-            <span>Kilograms</span>
-            <input name="kgs" id="kgs" value="0" type="number" autofocus pattern="[0-9]*" />
-          </label>
-        </li>
-
-        <li>
-          <label class="field">
-            <span>Pounds</span>
-            <input name="lbs" id="lbs" value="0" type="number" pattern="[0-9]*" />
-          </label>
-        </li>
-      </ul>
-    </main>
-
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
